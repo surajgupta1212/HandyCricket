@@ -1,3 +1,5 @@
+const socket = io();
+
 const playerName = prompt("HandyCricket\nEnter your name : ");
 let myId,
   opponentId,

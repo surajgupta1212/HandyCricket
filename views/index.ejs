@@ -1,17 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HandyCricket</title>
-    <link rel="stylesheet" href="/style/game.css" />
-    <script src="/socket.io/socket.io.js" defer></script>
-    <script src="/scripts/game.js" defer></script>
-  </head>
-  <body>
-    <h1>HandyCricket</h1>
-    <button id="createRoom">Create Private Room</button>
-    <button id="joinRoom">Join Private Room</button>
-    <button id="joinRandom">Play Randomly</button>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HandyCricket</title>
+  <link rel="stylesheet" href="/style/game.css">
+  <script src="/socket.io/socket.io.js" defer></script>
+  <script src="/scripts/game.js" defer></script>
+</head>
+<body>
+  <div id="player-headers">
+      <div class="player-header" id="player1-header">
+          <img src="/images/right.jpeg" alt="Player 1 Icon" class="player-icon">
+          <div class="player-info">
+              <span class="player-name">Player 1</span>
+              <span class="player-status">0 runs</span>
+          </div>
+      </div>
+      <div id="scoreboard">
+          <div id="current-score" class="score-box">
+              <span>Score:</span> <span id="score-value">0/0</span>
+          </div>
+          <div id="overs-left" class="score-box">
+              <span>Overs:</span> <span id="overs-value">0.0</span>
+          </div>
+      </div>
+      <div class="player-header" id="player2-header">
+          <img src="/images/right.jpeg" alt="Player 2 Icon" class="player-icon">
+          <div class="player-info">
+              <span class="player-name">Player 2</span>
+              <span class="player-status">Bowling</span>
+          </div>
+      </div>
+  </div>
+  <div id="green-layout">
+      <div class="side" id="left-side"></div>
+      <div class="side" id="right-side"></div>
+  </div>
+  <div id="bottom-box">
+      <div class="circle-box">
+          <img src="/images/image1.jpg" alt="1">
+      </div>
+      <div class="circle-box">
+          <img src="/images/image2.jpg" alt="2">
+      </div>
+      <div class="circle-box">
+          <img src="/images/image3.jpg" alt="3">
+      </div>
+      <div class="circle-box">
+          <img src="/images/image4.jpg" alt="4">
+      </div>
+      <div class="circle-box">
+          <img src="/images/image5.jpg" alt="5">
+      </div>
+      <div class="circle-box">
+          <img src="/images/image6.jpg" alt="6">
+      </div>
+  </div>
+  <script src="/js/animations.js"></script>
+</body>
 </html>
