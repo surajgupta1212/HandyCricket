@@ -7,19 +7,20 @@
   <link rel="stylesheet" href="/style/game.css">
   <script src="/socket.io/socket.io.js" defer></script>
   <script src="/scripts/game.js" defer></script>
+  <script src="/js/animations.js" defer></script>
 </head>
 <body>
   <div id="player-headers">
       <div class="player-header" id="player1-header">
           <img src="/images/right.jpeg" alt="Player 1 Icon" class="player-icon">
           <div class="player-info">
-              <span class="player-name">Player 1</span>
-              <span class="player-status">0 runs</span>
+              <span class="player-name" id="me">Player 1</span>
+              <span class="player-status" id="my-status">0 runs</span>
           </div>
       </div>
       <div id="scoreboard">
           <div id="current-score" class="score-box">
-              <span>Score:</span> <span id="score-value">0/0</span>
+              <span id="score-title">Score:</span> <span id="score-value">0/0</span>
           </div>
           <div id="overs-left" class="score-box">
               <span>Overs:</span> <span id="overs-value">0.0</span>
@@ -28,8 +29,8 @@
       <div class="player-header" id="player2-header">
           <img src="/images/right.jpeg" alt="Player 2 Icon" class="player-icon">
           <div class="player-info">
-              <span class="player-name">Player 2</span>
-              <span class="player-status">Bowling</span>
+              <span class="player-name" id="opponent">Player 2</span>
+              <span class="player-status" id="opponent-status">Bowling</span>
           </div>
       </div>
   </div>
@@ -57,6 +58,11 @@
           <img src="/images/image6.jpg" alt="6">
       </div>
   </div>
-  <script src="/js/animations.js"></script>
+  <div>
+    <button id="createRoom">Create Private Room</button>
+    <button id="joinRoom">Join Private Room</button>
+    <button id="joinRandom">Play Randomly</button>
+    <div id="room-id">Play Randomly</div>
+  </div>
 </body>
 </html>

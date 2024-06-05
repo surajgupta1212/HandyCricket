@@ -28,20 +28,23 @@ function generateRoomId(id) {
 io.on("connection", (socket) => {
   console.log(`[connected] : ${socket.id}`);
 
-  socket.on("createRoom", () => {
+  socket.on("createRoom", (playerName) => {
     const roomId = generateRoomId(socket.id);
     socket.join(roomId);
     socket.emit("socketId", socket.id, roomId);
-    rooms[roomId] = { players: [socket.id], choices: {} };
+    rooms[roomId] = {
+      players: [{ id: socket.id, name: playerName }],
+      choices: {},
+    };
     socket.emit("roomCreated", roomId);
     console.log(`[room created] : ${roomId}`);
   });
 
-  socket.on("joinRoom", (roomId) => {
+  socket.on("joinRoom", (roomId, playerName) => {
     if (rooms[roomId] && rooms[roomId].players.length === 1) {
       socket.join(roomId);
       socket.emit("socketId", socket.id, roomId);
-      rooms[roomId].players.push(socket.id);
+      rooms[roomId].players.push({ id: socket.id, name: playerName });
       console.log(`[room joined] : ${socket.id} joined ${roomId}`);
       io.to(roomId).emit("startToss", rooms[roomId].players);
     } else if (rooms[roomId]) {
@@ -51,20 +54,23 @@ io.on("connection", (socket) => {
     }
   });
 
-  socket.on("joinRandom", () => {
+  socket.on("joinRandom", (playerName) => {
     if (queue.length > 0) {
       const { socketId, roomId } = queue.shift();
       socket.join(roomId);
       socket.emit("socketId", socket.id, roomId);
       console.log(`[room joined] : ${socket.id} joined ${roomId}`);
-      rooms[roomId].players.push(socket.id);
+      rooms[roomId].players.push({ id: socket.id, name: playerName });
       io.to(roomId).emit("startToss", rooms[roomId].players);
     } else {
       const roomId = generateRoomId(socket.id);
       socket.join(roomId);
       socket.emit("socketId", socket.id, roomId);
       console.log(`[waiting] : ${socket.id} is waiting in ${roomId}`);
-      rooms[roomId] = { players: [socket.id], choices: {} };
+      rooms[roomId] = {
+        players: [{ id: socket.id, name: playerName }],
+        choices: {},
+      };
       queue.push({ socketId: socket.id, roomId });
       socket.emit("waiting");
     }
@@ -73,11 +79,9 @@ io.on("connection", (socket) => {
   socket.on("tossCall", (roomId, call) => {
     const tossResult = Math.random() < 0.5 ? "heads" : "tails";
     const winner =
-      call === tossResult
-        ? socket.id
-        : rooms[roomId].players[0] === socket.id
-        ? rooms[roomId].players[1]
-        : rooms[roomId].players[0];
+      call === tossResult ?
+        socket.id :
+        (rooms[roomId].players[0].id === socket.id ? rooms[roomId].players[1].id : rooms[roomId].players[0].id);
     io.to(roomId).emit("tossResult", { tossResult, tossWinner: winner });
   });
 
@@ -87,7 +91,7 @@ io.on("connection", (socket) => {
 
   socket.on("choice", (roomId, choice) => {
     const room = rooms[roomId];
-    if (room && room.players.includes(socket.id)) {
+    if (room && room.players.find(player => player.id === socket.id)) {
       room.choices[socket.id] = choice;
       if (Object.keys(room.choices).length === 2) {
         io.to(roomId).emit("choicesMade", room.choices);
@@ -110,12 +114,12 @@ io.on("connection", (socket) => {
       for (const room in rooms) {
         if (
           rooms.hasOwnProperty(room) &&
-          rooms[room].players.includes(socket.id)
+          rooms[room].players.find(player => player.id === socket.id)
         ) {
           console.log(
             `[disconnected] : ${socket.id} is disconnected - ${room}`
           );
-          io.to(room).emit("opponentDisconnected");
+          io.to(room).emit("opponentDisconnecteid");
           delete rooms[room];
           break;
         }
