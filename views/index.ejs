@@ -10,6 +10,7 @@
   <script src="/js/animations.js" defer></script>
 </head>
 <body>
+<div id="game-content">
   <div id="player-headers">
       <div class="player-header" id="player1-header">
           <img src="/images/right.jpeg" alt="Player 1 Icon" class="player-icon">
@@ -27,7 +28,7 @@
           </div>
       </div>
       <div class="player-header" id="player2-header">
-          <img src="/images/right.jpeg" alt="Player 2 Icon" class="player-icon">
+          <img src="/images/left.jpeg" alt="Player 2 Icon" class="player-icon">
           <div class="player-info">
               <span class="player-name" id="opponent">Player 2</span>
               <span class="player-status" id="opponent-status">Bowling</span>
@@ -57,6 +58,57 @@
       <div class="circle-box">
           <img src="/images/image6.jpg" alt="6">
       </div>
+  </div>
+</div>
+
+   <!-- User Information Modal -->
+  <div id="user-modal" class="modal active">
+    <div class="modal-content">
+        <h2>HandyCricket</h2>
+        <form id="user-form">
+            <label for="username">Name (4-6 characters)</label>
+            <input type="text" id="username" name="username" minlength="4" maxlength="6" required>
+            <label for="avatar">Avatar</label>
+            <div class="avatar-selection">
+                <input type="radio" id="avatar1" name="avatar" value="avatar1" required>
+                <label for="avatar1"><img src="/images/avatar1.png" alt="Avatar 1"></label>
+                <input type="radio" id="avatar2" name="avatar" value="avatar2">
+                <label for="avatar2"><img src="/images/avatar2.png" alt="Avatar 2"></label>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+  </div>
+
+  <!-- Play Mode Modal -->
+  <div id="play-mode-modal" class="modal">
+    <div class="modal-content">
+        <h2>Choose Play Mode</h2>
+        <button id="random-player">Play with Random Player</button>
+        <button id="create-room">Create Room</button>
+        <button id="join-room">Join Room</button>
+    </div>
+  </div>
+
+  <!-- Join Room Modal -->
+  <div id="join-room-modal" class="modal">
+    <div class="modal-content">
+        <h2>Enter Room ID</h2>
+        <form id="join-room-form">
+            <label for="room-id">Room ID</label>
+            <input type="text" id="room-id" name="room-id" required>
+            <button type="submit">Join</button>
+        </form>
+    </div>
+  </div>
+
+  <!-- Create Room Modal -->
+  <div id="create-room-modal" class="modal">
+    <div class="modal-content">
+        <h2>Room Created</h2>
+        <p>Your room ID is <span id="created-room-id"></span></p>
+        <button id="start-game">Start Game</button>
+    </div>
   </div>
   <div>
     <button id="createRoom">Create Private Room</button>
