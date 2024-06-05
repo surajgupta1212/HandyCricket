@@ -1,17 +1,6 @@
-const socket = io();
-
-const playerName = prompt("HandyCricket\nEnter your name : ");
-let myId,
-  opponentId,
-  roomId,
-  batter,
-  baller,
-  score = 0,
-  target = 0,
-  inning = 1;
-console.log(`Your name = ${playerName}`);
 
 const socket = io();
+
 
 document.getElementById("createRoom").addEventListener("click", () => {
   socket.emit("createRoom");
