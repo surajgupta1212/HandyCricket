@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="/style/game.css">
   <script src="/socket.io/socket.io.js" defer></script>
   <script src="/scripts/game.js" defer></script>
-  <script src="/scripts/script.js" defer></script>
+  <!-- <script src="/scripts/script.js" defer></script> -->
 
 </head>
 <body>
@@ -33,43 +33,57 @@
           <div class="player-info">
               <span class="player-name" id="opponent">Player 2</span>
               <span class="player-status" id="opponent-status">Bowling</span>
-          </div>
+            </div>
+        </div>
+    </div>
+    <div id="green-layout">
+        <div class="side" id="left-side">
+          <img src="/images/blue-fist.png" id="left-hand">
+        </div>
+        <div class="side" id="right-side">
+          <img src="/images/red-fist.png" id="right-hand">
       </div>
-  </div>
-  <div id="green-layout">
-      <div class="side" id="left-side"></div>
-      <div class="side" id="right-side"></div>
   </div>
   <div id="bottom-box">
-      <div class="circle-box">
-          <img src="/images/image1.jpg" alt="1">
-      </div>
-      <div class="circle-box">
-          <img src="/images/image2.jpg" alt="2">
-      </div>
-      <div class="circle-box">
-          <img src="/images/image3.jpg" alt="3">
-      </div>
-      <div class="circle-box">
-          <img src="/images/image4.jpg" alt="4">
-      </div>
-      <div class="circle-box">
-          <img src="/images/image5.jpg" alt="5">
-      </div>
-      <div class="circle-box">
-          <img src="/images/image6.jpg" alt="6">
-      </div>
+    <input type="radio" id="radio1" name="image-radio" value="1">
+    <label for="radio1" class="circle-box">
+      <img src="/images/image1.jpg" alt="1">
+    </label>
+  
+    <input type="radio" id="radio2" name="image-radio" value="2">
+    <label for="radio2" class="circle-box">
+      <img src="/images/image2.jpg" alt="2">
+    </label>
+  
+    <input type="radio" id="radio3" name="image-radio" value="3">
+    <label for="radio3" class="circle-box">
+      <img src="/images/image3.jpg" alt="3">
+    </label>
+  
+    <input type="radio" id="radio4" name="image-radio" value="4">
+    <label for="radio4" class="circle-box">
+      <img src="/images/image4.jpg" alt="4">
+    </label>
+  
+    <input type="radio" id="radio5" name="image-radio" value="5">
+    <label for="radio5" class="circle-box">
+      <img src="/images/image5.jpg" alt="5">
+    </label>
+  
+    <input type="radio" id="radio6" name="image-radio" value="6">
+    <label for="radio6" class="circle-box">
+      <img src="/images/image6.jpg" alt="6">
+    </label>
   </div>
 </div>
 
    <!-- User Information Modal -->
-  <div id="user-modal" class="modal active">
+  <div id="user-modal" class="modal">
     <div class="modal-content">
         <h2>HandyCricket</h2>
         <form id="user-form">
             <label for="username">Name (4-6 characters)</label>
-            <input type="text" id="username" name="username" minlength="4" maxlength="6" required>
-           
+            <input type="text" id="username" name="username" minlength="4" maxlength="6" autocomplete="off" required>
             <button type="submit">Submit</button>
         </form>
     </div>
@@ -91,7 +105,7 @@
         <h2>Enter Room ID</h2>
         <form id="join-room-form">
             <label for="room-id">Room ID</label>
-            <input type="text" id="room-id" name="room-id" required>
+            <input type="text" id="room-id" name="room-id" autocomplete="off" required>
             <button type="submit">Join</button>
         </form>
     </div>
@@ -101,9 +115,35 @@
   <div id="create-room-modal" class="modal">
     <div class="modal-content">
         <h2>Room Created</h2>
-        <p>Your room ID is <span id="created-room-id"></span></p>
+        <p>Use Room ID : <span id="created-room-id"></span></p>
+        <p>or</p>
+        <p>Share this link : <span id="created-room-link"></span></p>
         <button id="start-game">Start Game</button>
     </div>
   </div>
+
+  <!-- Info Modal -->
+  <div id="info-modal" class="modal">
+    <div class="modal-content">
+        <h3 id="info-modal-message"></h3>
+    </div>
+  </div>
+
+    <!-- Choice Modal -->
+    <div id="choice-modal" class="modal">
+        <div class="modal-content">
+            <h2 id="choice-modal-message"></h2>
+            <button id="button-1"></button>
+            <button id="button-2"></button>
+        </div>
+      </div>
+
+    <!-- GameOver Modal -->
+    <div id="game-over-modal" class="modal">
+        <div class="modal-content">
+            <h2 id="game-over-modal-message"></h2>
+            <button id="play-again">Play Again</button>
+        </div>
+      </div>
 </body>
 </html>

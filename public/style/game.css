@@ -11,6 +11,10 @@ body {
   overflow: hidden;
 }
 
+.hide {
+  display: none;
+}
+
 #game-content {
   display: flex;
   flex-direction: column;
@@ -103,6 +107,36 @@ body {
   margin: 10px 0;
 }
 
+#left-side {
+  display: flex;
+  justify-content: left;
+  width: 50%;
+}
+
+#left-side img {
+  transform: rotate(90deg) translateX(-90%) translateY(30%);
+  transform-origin: bottom;
+}
+
+.left-hand-animation {
+  animation: leftHandMotion 0.8s infinite alternate;
+}
+
+#right-side {
+  display: flex;
+  justify-content: right;
+  width: 50%;
+}
+
+#right-side img {
+  transform: rotate(90deg) rotateX(180deg) translateX(-90%) translateY(30%);
+  transform-origin: bottom;
+}
+
+.right-hand-animation {
+  animation: rightHandMotion 0.8s infinite alternate;
+}
+
 .side {
   flex: 1;
   background-color: #90ee90;
@@ -120,6 +154,10 @@ body {
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   animation: bottom-box-entrance 1s ease-out;
+}
+
+input[type='radio'] {
+  display: none;
 }
 
 .circle-box {
@@ -143,26 +181,9 @@ body {
   border-radius: 50%;
 }
 
-@keyframes scoreboard-entrance {
-  0% {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes bottom-box-entrance {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+input[type='radio']:checked + .circle-box {
+  transform: scale(1.1);
+  border-color: #007bff;
 }
 
 .modal {
@@ -207,7 +228,7 @@ body {
   margin: 10px 0 5px;
 }
 
-.modal-content form input[type="text"] {
+.modal-content form input[type='text'] {
   padding: 5px;
   margin-bottom: 15px;
 }
@@ -234,4 +255,43 @@ body.modal-active {
 
 body.modal-active .modal {
   pointer-events: auto; /* Allow pointer events on modals */
+}
+
+@keyframes scoreboard-entrance {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bottom-box-entrance {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes leftHandMotion {
+  from {
+    transform: rotate(90deg) translateX(-75%) translateY(25%);
+  }
+  to {
+    transform: rotate(60deg) translateX(-75%) translateY(25%);
+  }
+}
+@keyframes rightHandMotion {
+  from {
+    transform: rotate(90deg) rotateX(180deg) translateX(-90%) translateY(30%);
+  }
+  to {
+    transform: rotate(120deg) rotateX(180deg) translateX(-90%) translateY(30%);
+  }
 }
