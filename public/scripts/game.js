@@ -18,8 +18,8 @@ class Game {
   }
 
   init() {
-    this.me.name = prompt("HandyCricket\n\nEnter your name : ");
-    me.innerText = this.me.name;
+    // this.me.name = prompt("HandyCricket\n\nEnter your name : ");
+    // me.innerText = this.me.name;
 
     const urlParams = new URLSearchParams(window.location.search);
     const roomID = urlParams.get("room");
