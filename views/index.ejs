@@ -7,7 +7,8 @@
   <link rel="stylesheet" href="/style/game.css">
   <script src="/socket.io/socket.io.js" defer></script>
   <script src="/scripts/game.js" defer></script>
-  <script src="/js/animations.js" defer></script>
+  <script src="/scripts/script.js" defer></script>
+
 </head>
 <body>
 <div id="game-content">
@@ -68,13 +69,7 @@
         <form id="user-form">
             <label for="username">Name (4-6 characters)</label>
             <input type="text" id="username" name="username" minlength="4" maxlength="6" required>
-            <label for="avatar">Avatar</label>
-            <div class="avatar-selection">
-                <input type="radio" id="avatar1" name="avatar" value="avatar1" required>
-                <label for="avatar1"><img src="/images/avatar1.png" alt="Avatar 1"></label>
-                <input type="radio" id="avatar2" name="avatar" value="avatar2">
-                <label for="avatar2"><img src="/images/avatar2.png" alt="Avatar 2"></label>
-            </div>
+           
             <button type="submit">Submit</button>
         </form>
     </div>
@@ -109,12 +104,6 @@
         <p>Your room ID is <span id="created-room-id"></span></p>
         <button id="start-game">Start Game</button>
     </div>
-  </div>
-  <div>
-    <button id="createRoom">Create Private Room</button>
-    <button id="joinRoom">Join Private Room</button>
-    <button id="joinRandom">Play Randomly</button>
-    <div id="room-id">Play Randomly</div>
   </div>
 </body>
 </html>

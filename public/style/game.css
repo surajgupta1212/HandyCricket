@@ -172,9 +172,9 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   background: #ff704d;
-  padding: 20px;
+  padding: 70px; /* Increased size */
   border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
   text-align: center;
   z-index: 1000;
 }
@@ -184,12 +184,13 @@ body {
 }
 
 #game-content.blur {
-  filter: blur(5px);
+  filter: blur(9px);
   pointer-events: none;
 }
 
 .modal-content {
   color: #fff;
+  font-size: 1.5em; /* Increased text size */
 }
 
 .modal-content h2 {
@@ -224,4 +225,13 @@ button {
 
 button:hover {
   background-color: #ff5733;
+}
+
+/* Disable pointer events on the body when a modal is active */
+body.modal-active {
+  pointer-events: none;
+}
+
+body.modal-active .modal {
+  pointer-events: auto; /* Allow pointer events on modals */
 }
