@@ -207,6 +207,7 @@ input[type='radio']:checked + .circle-box {
 #game-content.blur {
   filter: blur(9px);
   pointer-events: none;
+  user-select: none;
 }
 
 .modal-content {
@@ -241,7 +242,24 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 18px;
+}
+
+#username-submit
+{
+  font-size: 28px;
+}
+
+#join-room-submit
+{
+  cursor: pointer;
+  font-size: 36px;
+}
+
+#start-game
+{
+  cursor: pointer;
+  font-size: 36px;
 }
 
 button:hover {
@@ -251,10 +269,19 @@ button:hover {
 /* Disable pointer events on the body when a modal is active */
 body.modal-active {
   pointer-events: none;
+  user-select: none;
 }
 
 body.modal-active .modal {
   pointer-events: auto; /* Allow pointer events on modals */
+}
+
+.copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2em;
+  margin-left: 5px;
 }
 
 @keyframes scoreboard-entrance {

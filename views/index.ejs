@@ -83,8 +83,8 @@
         <h2>HandyCricket</h2>
         <form id="user-form">
             <label for="username">Name (4-6 characters)</label>
-            <input type="text" id="username" name="username" minlength="4" maxlength="6" autocomplete="off" required>
-            <button type="submit">Submit</button>
+            <input type="text" id="username" name="username" autofocus minlength="4" maxlength="6" autocomplete="off" required/>
+            <button type="submit" id="username-submit">Submit</button>
         </form>
     </div>
   </div>
@@ -105,8 +105,8 @@
         <h2>Enter Room ID</h2>
         <form id="join-room-form">
             <label for="room-id">Room ID</label>
-            <input type="text" id="room-id" name="room-id" autocomplete="off" required>
-            <button type="submit">Join</button>
+            <input type="text" id="room-id" name="room-id" autofocus autocomplete="off" required/>
+            <button type="submit" id ="join-room-submit">Join</button>
         </form>
     </div>
   </div>
@@ -115,9 +115,13 @@
   <div id="create-room-modal" class="modal">
     <div class="modal-content">
         <h2>Room Created</h2>
-        <p>Use Room ID : <span id="created-room-id"></span></p>
+        <p>Use Room ID : <span id="created-room-id"></span>
+          <button id="copy-room-id" class="copy-btn">📋</button>
+        </p>
         <p>or</p>
-        <p>Share this link : <span id="created-room-link"></span></p>
+        <p>Share this link : <span id="created-room-link"></span>
+          <button id="copy-room-link" class="copy-btn">📋</button>
+        </p>
         <button id="start-game">Start Game</button>
     </div>
   </div>
