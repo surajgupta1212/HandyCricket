@@ -141,14 +141,21 @@
       <div class="modal-content">
         <h2>Room Created</h2>
         <p>
-          Use Room ID : <span id="created-room-id"></span>
-          <button id="copy-room-id" class="copy-btn">📋</button>
+          Use Room ID : 
+          <span class="clipboard">
+            <span id="created-room-id"></span>
+            <img src="/images/copy.png" id="copy-room-id" class="copy-btn" />
+          </span>
         </p>
         <p>or</p>
         <p>
-          Share this link : <span id="created-room-link"></span>
-          <button id="copy-room-link" class="copy-btn">📋</button>
+          Share this link :
+          <span class="clipboard">
+            <span id="created-room-link"></span>
+            <img src="/images/copy.png" id="copy-room-link" class="copy-btn" />
+          </span>
         </p>
+        <br>
         <button id="start-game">Start Game</button>
       </div>
     </div>

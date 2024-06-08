@@ -253,6 +253,7 @@ socket.on('waiting', () => {
 
 socket.on('startToss', players => {
   hideModal(infoModal);
+  gameContent.classList.remove('blur');
   game.updateOpponent(players);
 });
 
@@ -395,6 +396,8 @@ userForm.addEventListener('submit', e => {
     socket.emit('joinRoom', roomID);
     const baseUrl = window.location.href.split('?')[0];
     history.replaceState({}, document.title, baseUrl);
+    gameContent.classList.remove('blur');
+    re;
   } else {
     showModal(playModeModal);
   }
@@ -429,15 +432,17 @@ joinRoomForm.addEventListener('submit', e => {
 });
 
 copyRoomIdBtn.addEventListener('click', () => {
-  copyToClipboard(createdRoomId.innerText);
+  copyToClipboard(createdRoomId.innerText, copyRoomIdBtn);
 });
 
 copyRoomLinkBtn.addEventListener('click', () => {
-  copyToClipboard(createdRoomLink.innerText);
+  copyToClipboard(createdRoomLink.innerText, copyRoomLinkBtn);
 });
 
 document.getElementById('start-game').addEventListener('click', () => {
   hideModal(createRoomModal);
+  info.innerText = 'Waiting for opponent to join ...';
+  showModal(infoModal);
   gameContent.classList.remove('blur');
 });
 
@@ -461,11 +466,12 @@ function hideModal(modal) {
 }
 
 // Function to copy text to clipboard
-function copyToClipboard(text) {
+function copyToClipboard(text, btn) {
   navigator.clipboard
     .writeText(text)
     .then(() => {
-      alert('Copied to clipboard');
+      btn.src = '/images/copied.png';
+      setTimeout(() => (btn.src = '/images/copy.png'), 2000);
     })
     .catch(err => {
       console.error('Failed to copy: ', err);
