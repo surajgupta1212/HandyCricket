@@ -1,153 +1,180 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HandyCricket</title>
-  <link rel="stylesheet" href="/style/game.css">
-  <script src="/socket.io/socket.io.js" defer></script>
-  <script src="/scripts/game.js" defer></script>
-  <!-- <script src="/scripts/script.js" defer></script> -->
-
-</head>
-<body>
-<div id="game-content">
-  <div id="player-headers">
-      <div class="player-header" id="player1-header">
-          <img src="/images/right.jpeg" alt="Player 1 Icon" class="player-icon">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HandyCricket</title>
+    <link rel="stylesheet" href="/style/game.css" />
+    <script src="/socket.io/socket.io.js" defer></script>
+    <script src="/scripts/game.js" defer></script>
+  </head>
+  <body>
+    <!-- game-screen -->
+    <div id="game-content">
+      <div id="player-headers">
+        <div class="player-1-header" id="player1-header">
+          <img
+            src="/images/right.jpeg"
+            alt="Player 1 Icon"
+            class="player-icon"
+          />
           <div class="player-info">
-              <span class="player-name" id="me">Player 1</span>
-              <span class="player-status" id="my-status">0 runs</span>
+            <span class="player-name fancy" id="me">Player 1</span>
+            <span class="player-status" id="my-status">-</span>
           </div>
-      </div>
-      <div id="scoreboard">
+        </div>
+        <div id="scoreboard">
           <div id="current-score" class="score-box">
-              <span id="score-title">Score:</span> <span id="score-value">0/0</span>
+            <span id="score-title">Score:</span>
+            <span id="score-value">0/0</span>
           </div>
           <div id="overs-left" class="score-box">
-              <span>Overs:</span> <span id="overs-value">0.0</span>
+            <span>Overs:</span> <span id="overs-value">0.0</span>
           </div>
-      </div>
-      <div class="player-header" id="player2-header">
-          <img src="/images/left.jpeg" alt="Player 2 Icon" class="player-icon">
-          <div class="player-info">
-              <span class="player-name" id="opponent">Player 2</span>
-              <span class="player-status" id="opponent-status">Bowling</span>
-            </div>
         </div>
-    </div>
-    <div id="green-layout">
+        <div class="player-2-header" id="player2-header">
+          <div class="player-info">
+            <span class="player-name fancy" id="opponent">Player 2</span>
+            <span class="player-status" id="opponent-status">-</span>
+          </div>
+          <img
+            src="/images/left.jpeg"
+            alt="Player 2 Icon"
+            class="player-icon"
+          />
+        </div>
+      </div>
+      <div id="green-layout">
         <div class="side" id="left-side">
-          <img src="/images/blue-fist.png" id="left-hand">
+          <img src="/images/blue-fist.png" id="left-hand" />
         </div>
         <div class="side" id="right-side">
-          <img src="/images/red-fist.png" id="right-hand">
+          <img src="/images/red-fist.png" id="right-hand" />
+        </div>
       </div>
-  </div>
-  <div id="bottom-box">
-    <input type="radio" id="radio1" name="image-radio" value="1">
-    <label for="radio1" class="circle-box">
-      <img src="/images/image1.jpg" alt="1">
-    </label>
-  
-    <input type="radio" id="radio2" name="image-radio" value="2">
-    <label for="radio2" class="circle-box">
-      <img src="/images/image2.jpg" alt="2">
-    </label>
-  
-    <input type="radio" id="radio3" name="image-radio" value="3">
-    <label for="radio3" class="circle-box">
-      <img src="/images/image3.jpg" alt="3">
-    </label>
-  
-    <input type="radio" id="radio4" name="image-radio" value="4">
-    <label for="radio4" class="circle-box">
-      <img src="/images/image4.jpg" alt="4">
-    </label>
-  
-    <input type="radio" id="radio5" name="image-radio" value="5">
-    <label for="radio5" class="circle-box">
-      <img src="/images/image5.jpg" alt="5">
-    </label>
-  
-    <input type="radio" id="radio6" name="image-radio" value="6">
-    <label for="radio6" class="circle-box">
-      <img src="/images/image6.jpg" alt="6">
-    </label>
-  </div>
-</div>
+      <div id="bottom-box">
+        <input type="radio" id="radio1" name="image-radio" value="1" />
+        <label for="radio1" class="circle-box">
+          <span>1</span>
+        </label>
 
-   <!-- User Information Modal -->
-  <div id="user-modal" class="modal">
-    <div class="modal-content">
-        <h2>HandyCricket</h2>
-        <form id="user-form">
-            <label for="username">Name (4-6 characters)</label>
-            <input type="text" id="username" name="username" autofocus minlength="4" maxlength="6" autocomplete="off" required/>
-            <button type="submit" id="username-submit">Submit</button>
-        </form>
+        <input type="radio" id="radio2" name="image-radio" value="2" />
+        <label for="radio2" class="circle-box">
+          <span>2</span>
+        </label>
+
+        <input type="radio" id="radio3" name="image-radio" value="3" />
+        <label for="radio3" class="circle-box">
+          <span>3</span>
+        </label>
+
+        <input type="radio" id="radio4" name="image-radio" value="4" />
+        <label for="radio4" class="circle-box">
+          <span>4</span>
+        </label>
+
+        <input type="radio" id="radio5" name="image-radio" value="5" />
+        <label for="radio5" class="circle-box">
+          <span>5</span>
+        </label>
+
+        <input type="radio" id="radio6" name="image-radio" value="6" />
+        <label for="radio6" class="circle-box">
+          <span>6</span>
+        </label>
+      </div>
     </div>
-  </div>
 
-  <!-- Play Mode Modal -->
-  <div id="play-mode-modal" class="modal">
-    <div class="modal-content">
+    <!-- User Information Modal -->
+    <div id="user-modal" class="modal">
+      <div class="modal-content">
+        <h1 class="fancy">HandyCricket</h1>
+        <br />
+        <form id="user-form">
+          <label for="username">Name (4-6 characters)</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            autofocus
+            minlength="4"
+            maxlength="6"
+            autocomplete="off"
+            required
+          />
+          <button type="submit" id="username-submit">Submit</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Play Mode Modal -->
+    <div id="play-mode-modal" class="modal">
+      <div class="modal-content">
         <h2>Choose Play Mode</h2>
         <button id="random-player">Play with Random Player</button>
         <button id="create-room">Create Room</button>
         <button id="join-room">Join Room</button>
+      </div>
     </div>
-  </div>
 
-  <!-- Join Room Modal -->
-  <div id="join-room-modal" class="modal">
-    <div class="modal-content">
+    <!-- Join Room Modal -->
+    <div id="join-room-modal" class="modal">
+      <div class="modal-content">
         <h2>Enter Room ID</h2>
         <form id="join-room-form">
-            <label for="room-id">Room ID</label>
-            <input type="text" id="room-id" name="room-id" autofocus autocomplete="off" required/>
-            <button type="submit" id ="join-room-submit">Join</button>
+          <label for="room-id">Room ID</label>
+          <input
+            type="text"
+            id="room-id"
+            name="room-id"
+            autofocus
+            autocomplete="off"
+            required
+          />
+          <button type="submit" id="join-room-submit">Join</button>
         </form>
+      </div>
     </div>
-  </div>
 
-  <!-- Create Room Modal -->
-  <div id="create-room-modal" class="modal">
-    <div class="modal-content">
+    <!-- Create Room Modal -->
+    <div id="create-room-modal" class="modal">
+      <div class="modal-content">
         <h2>Room Created</h2>
-        <p>Use Room ID : <span id="created-room-id"></span>
+        <p>
+          Use Room ID : <span id="created-room-id"></span>
           <button id="copy-room-id" class="copy-btn">📋</button>
         </p>
         <p>or</p>
-        <p>Share this link : <span id="created-room-link"></span>
+        <p>
+          Share this link : <span id="created-room-link"></span>
           <button id="copy-room-link" class="copy-btn">📋</button>
         </p>
         <button id="start-game">Start Game</button>
+      </div>
     </div>
-  </div>
 
-  <!-- Info Modal -->
-  <div id="info-modal" class="modal">
-    <div class="modal-content">
+    <!-- Info Modal -->
+    <div id="info-modal" class="modal">
+      <div class="modal-content">
         <h3 id="info-modal-message"></h3>
+      </div>
     </div>
-  </div>
 
     <!-- Choice Modal -->
     <div id="choice-modal" class="modal">
-        <div class="modal-content">
-            <h2 id="choice-modal-message"></h2>
-            <button id="button-1"></button>
-            <button id="button-2"></button>
-        </div>
+      <div class="modal-content">
+        <h2 id="choice-modal-message"></h2>
+        <button id="button-1"></button>
+        <button id="button-2"></button>
       </div>
+    </div>
 
     <!-- GameOver Modal -->
     <div id="game-over-modal" class="modal">
-        <div class="modal-content">
-            <h2 id="game-over-modal-message"></h2>
-            <button id="play-again">Play Again</button>
-        </div>
+      <div class="modal-content">
+        <h2 id="game-over-modal-message"></h2>
+        <button id="play-again">Play Again</button>
       </div>
-</body>
+    </div>
+  </body>
 </html>

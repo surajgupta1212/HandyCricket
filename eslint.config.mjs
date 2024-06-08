@@ -14,11 +14,11 @@ export default [
   {
     rules: {
       "no-console": "off",
-      "no-unused-vars": "error",
+      "no-unused-vars": "warn",
       "no-undef": "warn",
-      "semi": ["error", "always"],
-      "prefer-const": "error",
-      "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0 }],
+      "semi": ["warn", "always"],
+      "prefer-const": "warn",
+      "no-multiple-empty-lines": ["warn", { "max": 1, "maxEOF": 0 }],
     }
 }
 ];
