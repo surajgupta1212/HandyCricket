@@ -145,7 +145,7 @@ class Game {
     leftHand.classList.remove('left-hand-animation');
     rightHand.classList.remove('right-hand-animation');
     leftHand.src = blueHands[Number(choices[this.me.id] | 0)];
-    rightHand.src = redHands[Number(choices[this.me.id] | 0)];
+    rightHand.src = redHands[Number(choices[this.opponent.id] | 0)];
     if (choices[this.me.id] === null || choices[this.opponent.id] === null) {
       info.innerText = 'NO BALL';
       showModal(infoModal);
@@ -297,7 +297,12 @@ socket.on('choose', () => {
         game.status.bowler,
         game.status.batter,
       ];
-      info.innerText = 'Scorecard will shown [here]';
+      let statement;
+      if (game.me.id === game.status.batter)
+        statement = `You need ${game.score.target} ${game.score.target == 1 ? 'run' : 'runs'} to win.`;
+      else
+        statement = `Defend ${game.score.target} ${game.score.target == 1 ? 'run' : 'runs'} to secure the win.`;
+      info.innerText = `Scorecard :\n${game.score.target - 1} ${game.score.target - 1 == 1 ? 'run' : 'runs'}\n${(game.score.ballsPlayed / 6) | 0}.${game.score.ballsPlayed % 6} overs\n\n${statement}`;
       showModal(infoModal);
       setTimeout(() => {
         game.showScore();
