@@ -228,7 +228,7 @@ input[type='radio']:checked + .circle-box {
   left: 50%;
   transform: translate(-50%, -50%);
   background: #ff704d;
-  padding: 70px; /* Increased size */
+  padding: 65px; /* Increased size */
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
   text-align: center;
@@ -267,6 +267,7 @@ input[type='radio']:checked + .circle-box {
 .modal-content form input[type='text'] {
   padding: 5px;
   margin-bottom: 15px;
+  font-family: 'MightySouly', Arial, sans-serif;
 }
 
 button {
@@ -278,10 +279,12 @@ button {
   border-radius: 5px;
   cursor: pointer;
   font-size: 18px;
+  font-family: 'MightySouly', Arial, sans-serif;
 }
 
 #username-submit {
   font-size: 28px;
+  
 }
 
 #join-room-submit {
