@@ -30,6 +30,7 @@ body {
 /*   Custom classes   */
 .fancy {
   font-family: MightySouly;
+  letter-spacing: 1px;
 }
 
 .hide {
@@ -226,9 +227,11 @@ input[type='radio']:checked + .circle-box {
   font-family: Espressonal, Arial, sans-serif;
   top: 50%;
   left: 50%;
+  width: 94%;
+  max-width: max-content;
   transform: translate(-50%, -50%);
   background: #ff704d;
-  padding: 65px; /* Increased size */
+  padding: 50px; /* Increased size */
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
   text-align: center;
@@ -246,11 +249,17 @@ input[type='radio']:checked + .circle-box {
 }
 
 .modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   color: #fff;
+  width: 100%;
   font-size: 1.5em; /* Increased text size */
 }
 
 .modal-content h2 {
+  font-size: 1.2em;
+  font-weight: 600;
   margin-bottom: 20px;
 }
 
@@ -258,33 +267,45 @@ input[type='radio']:checked + .circle-box {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.modal-content form label {
-  margin: 10px 0 5px;
+  width: max-content;
 }
 
 .modal-content form input[type='text'] {
   padding: 5px;
   margin-bottom: 15px;
   font-family: 'MightySouly', Arial, sans-serif;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  text-align: center;
+  width: 10ch;
+  border: none;
+  border-radius: 5px;
+}
+
+.modal-content form input[type='text']:focus {
+  outline: none;
 }
 
 button {
-  padding: 10px 20px;
-  margin: 10px 0;
-  background-color: #ff704d;
-  color: #fff;
+  color: #ff704d;
+  background-color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 18px;
   font-family: 'MightySouly', Arial, sans-serif;
+  padding: 10px 15px;
+  margin: 10px 0;
+  width: max-content;
+}
+
+button:hover {
+  color: #ebebeb;
+  background-color: #ff5733;
 }
 
 #username-submit {
   font-size: 28px;
-  
 }
 
 #join-room-submit {
@@ -295,10 +316,6 @@ button {
 #start-game {
   cursor: pointer;
   font-size: 36px;
-}
-
-button:hover {
-  background-color: #ff5733;
 }
 
 /* Disable pointer events on the body when a modal is active */
@@ -433,6 +450,10 @@ body.modal-active .modal {
 
   .circle-box {
     font-size: 1.5rem;
+  }
+
+  .modal {
+    padding: 30px 50px;
   }
 }
 
