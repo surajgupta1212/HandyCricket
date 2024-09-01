@@ -51,7 +51,7 @@ https://github.com/surajgupta1212/HandyCricket/assets/122087430/74d82b6c-9c61-41
 1. Clone the project
 
 ```bash
-  [https://github.com/surajgupta1212/HandyCricket]
+  https://github.com/surajgupta1212/HandyCricket
 ```
 
 2. Go to the project directory
